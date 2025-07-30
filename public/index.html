@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen font-sans">
+    <div class="max-w-3xl mx-auto py-10 px-6">
+      <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">
+        📅 Live Booking Dashboard
+      </h1>
+
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-3"
+      >
+        <label class="text-sm font-medium">Filter by Venue:</label>
+        <select
+          id="venueFilter"
+          title="Filter by Venue"
+          class="border border-gray-300 rounded px-3 py-2 w-full sm:w-1/2"
+        >
+          <option value="">All Venues</option>
+          <option value="Shahi Rasoi">Shahi Rasoi</option>
+          <option value="Radissons">Radissons</option>
+          <option value="Claires">Claires</option>
+          <option value="Rang Mahal">Rang Mahal</option>
+          <option value="Taj Hotel">Taj Hotel</option>
+        </select>
+      </div>
+
+      <p id="noBookingsMessage" class="text-gray-500 text-center mt-6">
+        No bookings yet...
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-6 text-center">
+        <div class="bg-white p-4 rounded shadow border-t-4 border-indigo-400">
+          <h2 class="text-sm text-gray-500">Most Popular Venue</h2>
+          <p id="popularVenue" class="text-xl font-semibold text-indigo-700">
+            —
+          </p>
+        </div>
+        <div class="bg-white p-4 rounded shadow border-t-4 border-green-400">
+          <h2 class="text-sm text-gray-500">Average Party Size</h2>
+          <p id="avgPartySize" class="text-xl font-semibold text-green-700">
+            —
+          </p>
+        </div>
+        <div class="bg-white p-4 rounded shadow border-t-4 border-blue-400">
+          <h2 class="text-sm text-gray-500">Total Bookings Today</h2>
+          <p id="totalBookings" class="text-xl font-semibold text-blue-700">
+            —
+          </p>
+        </div>
+        <div class="bg-white p-4 rounded shadow border-t-4 border-pink-400">
+          <h2 class="text-sm text-gray-500">Last Booking Time</h2>
+          <p id="lastBookingTime" class="text-xl font-semibold text-pink-700">
+            —
+          </p>
+        </div>
+      </div>
+
+      <div class="my-6">
+        <h2 class="text-xl font-bold mb-2">Bookings Overview</h2>
+        <canvas id="venueChart" height="150"></canvas>
+      </div>
+
+      <div class="my-6">
+        <h2 class="text-xl font-bold mb-2">Average Party Size Trend</h2>
+        <canvas id="avgPartySizeChart" height="150"></canvas>
+      </div>
+
+      <button
+        type="reset"
+        id="clearBtn"
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4"
+      >
+        Clear Bookings
+      </button>
+      <button
+        type="button"
+        id="enableSoundBtn"
+        class="px-3 py-2 bg-yellow-600 text-white rounded"
+      >
+        Enable Notifications
+      </button>
+
+      <div id="bookings-list" class="space-y-4 mt-6"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="/script.js"></script>
+    <script src="charts.js"></script>
+  </body>
+</html>
